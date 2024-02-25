@@ -15,7 +15,8 @@ class AppColor {
 
   static const Color secoundColor = Color(0xffFDBD4D);
   static const Color secoundColor2 = Color(0xff10A9AE);
-  static const Color splsh = Color(0xffD1EDFC);
+  static const Color splsh = Color(0xff3FC0C0);
+
 
 
   static Color primaryTextColor = Colors.white;

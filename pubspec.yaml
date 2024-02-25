@@ -63,6 +63,12 @@ dependencies:
   font_awesome_flutter: ^10.1.0
   fluttericon: ^2.0.0
   dartz: ^0.10.1
+  carousel_slider: ^4.2.1
+  flutter_svg: ^2.0.5
+  video_player: ^2.2.18
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -96,6 +102,8 @@ flutter:
   assets:
     - assets/images/
     - assets/lottie/
+    - assets/video/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

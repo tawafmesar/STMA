@@ -1,8 +1,10 @@
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import '../core/constant/routes.dart';
 import '../core/services/services.dart';
+import '../view/screen/explore.dart';
 
 
 
@@ -11,10 +13,16 @@ class HomeController extends GetxController {
   MyServices myServices = Get.find();
 
   final List<Widget> tabPages = [
-    Center(child: Text("hellow 1"),),
+    ExploreScreen(),
     Center(child: Text("hellow 2"),),
     Center(child: Text("hellow 3"),),
-    Center(child: Text("hellow 4"),),
+    Center(child:
+    SvgPicture.asset(
+      'assets/images/saudi2.svg',
+      semanticsLabel: 'My SVG Image',
+      height: 100,
+      width: 70,
+    ),),
   ];
 
 
