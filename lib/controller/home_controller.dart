@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../core/constant/routes.dart';
 import '../core/services/services.dart';
 import '../view/screen/explore.dart';
+import '../view/screen/test.dart';
 
 
 
@@ -15,7 +16,7 @@ class HomeController extends GetxController {
   final List<Widget> tabPages = [
     ExploreScreen(),
     Center(child: Text("hellow 2"),),
-    Center(child: Text("hellow 3"),),
+    MyHomePage(title: 'jhh',),
     Center(child:
     SvgPicture.asset(
       'assets/images/saudi2.svg',

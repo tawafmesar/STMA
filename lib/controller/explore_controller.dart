@@ -43,6 +43,8 @@ class ExploreControllerImp extends ExploreController {
     super.onInit();
   }
 
+
+
   @override
   getdata() async {
     statusRequest = StatusRequest.loading;
@@ -51,18 +53,17 @@ class ExploreControllerImp extends ExploreController {
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        // places.addAll(response['places']['data']);
-
-        places.addAll(response.map((e) => places_model.fromJson(e)));
+        // Assuming response['data'] is a List of Map<String, dynamic>
+        places.addAll(response['data'].map((e) => places_model.fromJson(e)).toList());
 
         print(places);
-
       } else {
         statusRequest = StatusRequest.failure;
       }
     }
     update();
   }
+
 
   // @override
   // goToItems(places, selectedplace, placesid) {

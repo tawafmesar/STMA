@@ -1,6 +1,7 @@
 class AppLink {
 
   static const String server = "https://axonometric-buildin.000webhostapp.com/";
+  static const String upload = "$server/upload/";
 
 //
   static const String test = "$server/test.php";

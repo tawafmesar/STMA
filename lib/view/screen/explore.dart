@@ -12,33 +12,6 @@ import '../../core/constant/color.dart';
 import '../../core/constant/imageasset.dart';
 
 
-final List<String> imgList = [
-  'assets/images/num1.jpg',
-  'assets/images/num2.jpeg',
-  'assets/images/ulaa.jpg'
-];
-
-final List<dynamic> _products = [
-  {
-    'title': 'الركن الأول    الإحرام',
-    'image':
-    'assets/images/ulaa.jpg',
-    'description': 'البدء بنية أداء النسك بالقلب، والتلفظ بها باللسان قائلًا: لبيك اللهم حجًا لحج الإفراد والتمتع (بعد إتمام العمرة) أو اللهم لبيك عمرة وحجًا لحج القران، ولا مانع بإتمامها بأن يقول: فإن حبسني حابس فمحلي حيث حبستني عند الخوف من عدم التمكن من أداء النسك لمرض أو ظرف يوشك أن يُلمّ بك. '
-  },
-  {
-    'title': 'الركن الثاني    الطواف',
-    'image':
-    'assets/images/num1.jpg',
-    'description': 'سبعة أشواط يقوم به ضيف الرحمن حول الكعبة، يبدأ كل شوط من أمام الحجر الأسود وينتهي به، يجعل ضيف الرحمن الكعبة عن يساره أثناء الطواف '
-  },
-  {
-    'title': 'الركن الثالث   السعي',
-    'image':
-    'assets/images/num2.jpeg',
-    'description': 'السعى سبعة أشواط، يبدأ الأول بالصفا وينتهى بالمروة ويبدأ الثانى من المروة وينتهى بالصفا، والشوط السابع ينتهى عند المروة، ويسن الإسراع للرجل دون المرأة بين العمودين الأخضرين، ولا يشترط للسعى طهارة ولا موالاة بين الأشواط فإن كان قد قدّم السعي مع طواف القدوم فلا يعيده. '
-  }
-];
-
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
@@ -49,6 +22,7 @@ class ExploreScreen extends StatefulWidget {
 
 class _ExploreScreenState extends State<ExploreScreen> {
 
+
   late VideoPlayerController _controller;
 
   @override
@@ -56,9 +30,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
     super.initState();
     _controller = VideoPlayerController.asset('assets/video/home.mp4');
 
-    _controller.addListener(() {
-      setState(() {});
-    });
+
     _controller.setLooping(true);
     _controller.play();
     _controller.initialize().then((_) => setState(() {}));
@@ -162,73 +134,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
               ),
             ),
           )
-          ,Container(
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  aspectRatio: 2.0,
-                  enlargeCenterPage: true,
-                  enableInfiniteScroll: false,
-                  initialPage: 2,
-                  autoPlay: true,
-                ),
-                items: imageSliders,
-              ))],
+        ],
       ),
     );
   }
 }
 
 
-
-
-
-
-final List<Widget> imageSliders = _products
-    .map((item) => Container(
-  child: Container(
-    margin: EdgeInsets.all(5.0),
-    child: InkWell(
-      onTap: (){
-        print('No. ${_products.indexOf(item)} image');
-
-      },
-      child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-          child: Stack(
-            children: <Widget>[
-              Image.asset(_products[1], fit: BoxFit.cover, width: 1000.0),
-              Positioned(
-                bottom: 0.0,
-                left: 0.0,
-                right: 0.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(200, 0, 0, 0),
-                        Color.fromARGB(0, 0, 0, 0)
-                      ],
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                    ),
-                  ),
-                  padding: EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 20.0),
-                  child: Text(
-                    'No. ${_products[0]} image',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )),
-    ),
-  ),
-))
-    .toList();
 
 

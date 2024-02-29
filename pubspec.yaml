@@ -67,6 +67,7 @@ dependencies:
   flutter_svg: ^2.0.5
   video_player: ^2.2.18
   stacked_card_carousel: ^0.0.4
+  flutter_custom_carousel_slider: ^1.0.0
 
 
 
