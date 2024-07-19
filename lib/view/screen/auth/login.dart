@@ -26,82 +26,92 @@ class Login extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
-        title: Text('تسجيل الدخول',
-            style: Theme.of(context)
-                .textTheme
-                .headline1!
-                .copyWith(color: AppColor.grey)),
+        title: Text(
+          'Login',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                color: AppColor.clockBG,
+                offset: Offset(2, 2),
+                blurRadius: 4,
+              ),
+            ],
+          ),
+        ),
       ),
       body: WillPopScope(
         onWillPop: alertExitApp,
         child: GetBuilder<LoginControllerImp>(
-            builder: (controller)  =>
-
-                HandlingDataViewRequest(statusRequest: controller.statusRequest
-                    , widget: Container(
+          builder: (controller) => HandlingDataViewRequest(
+            statusRequest: controller.statusRequest,
+            widget: Container(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               child: Form(
                 key: controller.formstate,
-                child: ListView(children: [
-                  const LogoAuth(),
-                  const SizedBox(height: 20),
-                  const CustomTextTitleAuth(text: "اهلا بك "),
-                  const SizedBox(height: 10),
-                  const CustomTextBodyAuth(
-                      text:
-                      "قم بتسجيل الدخول عبر البريد الألكتروني وكلمة المرور الخاصة بك"),
-                  const SizedBox(height: 15),
-
-                  CustonTextFormAuth(
-                    isNumber: false ,
-                    valid: (val) {
-                      return validInput(val!, 5, 100, "email");
-                    },
-                    mycontroller: controller.email,
-                    hinttext: "ادخل بريدك الألكتروني",
-                    iconData: Icons.email_outlined,
-                    labeltext: "البريد الألكتروني",
-                  ),
-                  CustonTextFormAuth(
-                    isNumber: false ,
-                    valid: (val) {
-                      return validInput(val!, 5, 30, "password");
-                    },
-                    obscureText:true,
-                     mycontroller: controller.password,
-                    hinttext: "ادخل كلمة المرور",
-                    iconData: Icons.lock_outline,
-                    labeltext: "كلمة المرور",
-                  ),
-                  InkWell(
-                    onTap: () {
-                      controller.goToForgetPassword();
-                    },
-                    child:  const Text(
-                      "هل نسيت كلمة المرور",
-                      textAlign: TextAlign.right,
+                child: ListView(
+                  children: [
+                    const LogoAuth(),
+                    const SizedBox(height: 20),
+                    const CustomTextTitleAuth(text: "Welcome"),
+                    const SizedBox(height: 10),
+                    const CustomTextBodyAuth(
+                      text: "Sign in using your email and password",
                     ),
-                  ),
-                  CustomButtomAuth(text: "تسجيل الدخول", onPressed: () {
-                    controller.login();
-                  }),
-
-
-                  const SizedBox(height: 40),
-                  CustomTextSignUpOrSignIn(
-                    textone: "ليس لديك حساب ؟ ",
-                    texttwo: "انشاء حساب",
-                    onTap: () {
-                      controller.goToSignUp();
-                    },
-                  )
-                ]),
+                    const SizedBox(height: 15),
+                    CustonTextFormAuth(
+                      isNumber: false,
+                      valid: (val) {
+                        return validInput(val!, 5, 100, "email");
+                      },
+                      mycontroller: controller.email,
+                      hinttext: "Enter your email",
+                      iconData: Icons.email_outlined,
+                      labeltext: "Email",
+                    ),
+                    CustonTextFormAuth(
+                      isNumber: false,
+                      valid: (val) {
+                        return validInput(val!, 5, 30, "password");
+                      },
+                      obscureText: true,
+                      mycontroller: controller.password,
+                      hinttext: "Enter your password",
+                      iconData: Icons.lock_outline,
+                      labeltext: "Password",
+                    ),
+                    InkWell(
+                      onTap: () {
+                        controller.goToForgetPassword();
+                      },
+                      child: const Text(
+                        "Forgot password?",
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                    CustomButtomAuth(
+                      text: "Sign in",
+                      onPressed: () {
+                        controller.login();
+                      },
+                    ),
+                    const SizedBox(height: 40),
+                    CustomTextSignUpOrSignIn(
+                      textone: "Don't have an account? ",
+                      texttwo: "Sign up",
+                      onTap: () {
+                        controller.goToSignUp();
+                      },
+                    ),
+                  ],
+                ),
               ),
-            )
-        ))
-        ,
+            ),
+          ),
+        ),
       ),
     );
   }
 }
-

@@ -18,11 +18,16 @@ class VerfiyCode extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
-        title: Text('لتأكيد الحساب',
-            style: Theme.of(context)
-                .textTheme
-                .headline1!
-                .copyWith(color: AppColor.grey)),
+        title: Text( 'Account Verification',
+            style:TextStyle(color:Colors.white,fontSize: 20, fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  color: AppColor.clockBG,
+                  offset: Offset(2, 2),
+                  blurRadius: 4,
+                ),
+              ],)
+        ),
       ),
         body:GetBuilder<VerifyCodeControllerImp>(
             builder: (controller)=>
@@ -34,11 +39,11 @@ class VerfiyCode extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: ListView(children: [
           const SizedBox(height: 20),
-          const CustomTextTitleAuth(text: "رمز التحقق"),
+          const CustomTextTitleAuth(text: "Verification Code"),
           const SizedBox(height: 10),
           const CustomTextBodyAuth(
-              text:
-              "الرجاء إدخال رمز التحقق الذي تم ارسالة الى البريد الألكتروني"),
+              text: "Please enter the verification code sent to your email",
+          ),
           const SizedBox(height: 15),
           OtpTextField(
 
@@ -64,3 +69,4 @@ class VerfiyCode extends StatelessWidget {
     );
   }
 }
+

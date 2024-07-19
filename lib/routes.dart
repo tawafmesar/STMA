@@ -10,6 +10,10 @@ import 'package:stma/view/screen/auth/success_signup.dart';
 import 'package:stma/view/screen/auth/verifycodesignup.dart';
 import 'package:stma/view/screen/explore.dart';
 import 'package:stma/view/screen/home.dart';
+import 'package:stma/view/screen/hoteldetails.dart';
+import 'package:stma/view/screen/hotels.dart';
+import 'package:stma/view/screen/placedetails.dart';
+import 'package:stma/view/screen/votessuggestions.dart';
 
 import 'view/screen/spalshscreen.dart';
 
@@ -38,6 +42,11 @@ List<GetPage<dynamic>>? routes = [
 
 GetPage(name: AppRoute.homepage , page: () =>  HomeScreen()),
   GetPage(name: AppRoute.explorescreen , page: () =>  ExploreScreen()),
+  GetPage(name: AppRoute.placedetails , page: () =>  PlaceDetailsScreen()),
+  GetPage(name: AppRoute.votesSuggestions , page: () =>  VotesSuggestionsScreen()),
+  GetPage(name: AppRoute.hotelsScreen , page: () =>  HotelsScreen()),
+  GetPage(name: AppRoute.hotelDetailsScreen , page: () =>  HotelDetailsScreen()),
+
 
 
 

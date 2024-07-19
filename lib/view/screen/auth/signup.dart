@@ -13,7 +13,6 @@ import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/customtexttitleauth.dart';
 import '../../widget/auth/textsignup.dart';
 
-
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
 
@@ -25,102 +24,102 @@ class SignUp extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
-        title: Text('إنشاء حساب ',
-            style: Theme.of(context)
-                .textTheme
-                .headline1!
-                .copyWith(color: AppColor.grey)),
+        title: Text(
+          'Create Account',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                color: AppColor.clockBG,
+                offset: Offset(2, 2),
+                blurRadius: 4,
+              ),
+            ],
+          ),
+        ),
       ),
       body: WillPopScope(
         onWillPop: alertExitApp,
         child: GetBuilder<SignUpControllerImp>(
-            builder:
-                (controller) =>
-
-                HandlingDataViewRequest(statusRequest: controller.statusRequest,
-                    widget:
-                    Container(
+          builder: (controller) => HandlingDataViewRequest(
+            statusRequest: controller.statusRequest,
+            widget: Container(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
               child: Form(
                 key: controller.formstate,
-                child: ListView(children: [
-                  const SizedBox(height: 20),
-                  const CustomTextTitleAuth(text: "اهلا بك"),
-                  const SizedBox(height: 10),
-                  const CustomTextBodyAuth(
-                      text:
-                      "يمكنك انشاء الحساب عبر البريد الألكتروني و بعض المعلومات عنك"),
-                  const SizedBox(height: 15),
-
-                  CustonTextFormAuth(
-                    isNumber: false,
-                    valid: (val) {
-                      return validInput(val!, 3, 20, "username");
-                    },
-                    mycontroller: controller.username,
-                    hinttext: "ادخل اسم المستخدم",
-                    iconData: Icons.person_outline,
-                    labeltext: "اسم المستخدم",
-
-                    // mycontroller: ,
-                  ),
-
-                  CustonTextFormAuth(
-                    isNumber: false,
-                    valid: (val) {
-                      return validInput(val!, 3, 35, "email");
-                    },
-                    mycontroller: controller.email,
-                    hinttext: "ادخل البريد الالكتروني",
-                    iconData: Icons.email_outlined,
-                    labeltext: "البريد الألكتروني",
-                    // mycontroller: ,
-                  ),
-
-                  CustonTextFormAuth(
-                    isNumber: true,
-
-                    valid: (val) {
-                      return validInput(val!, 2, 19, "phone");
-                    },
-                    mycontroller: controller.phone,
-                    hinttext: "ادخل رقم الجوال  ",
-                    iconData: Icons.phone_android_outlined,
-                    labeltext: "رقم الجوال",
-                    // mycontroller: ,
-                  ),
-                  CustonTextFormAuth(
-                    isNumber: false,
-
-                    valid: (val) {
-                      return validInput(val!, 3, 30, "password");
-                    },
-                    obscureText:true,
-
-                    mycontroller: controller.password,
-                    hinttext: "ادخل كلمة المرور",
-                    iconData: Icons.lock_outline,
-                    labeltext: " كلمة المرور",
-                    // mycontroller: ,
-                  ),
-
-                  CustomButtomAuth(text: "انشاء", onPressed: () {
-                    controller.signUp();
-                  }),
-                  const SizedBox(height: 40),
-                  CustomTextSignUpOrSignIn(
-                    textone: "لديك حساب مسبقاً ؟ ",
-                    texttwo: " الذهاب لتسجيل الدخول ",
-                    onTap: () {
-                      controller.goToSignIn();
-                    },
-                  ),
-                ]),
+                child: ListView(
+                  children: [
+                    const SizedBox(height: 20),
+                    const CustomTextTitleAuth(text: "Welcome"),
+                    const SizedBox(height: 10),
+                    const CustomTextBodyAuth(
+                      text: "You can create an account using your email and some information about you",
+                    ),
+                    const SizedBox(height: 15),
+                    CustonTextFormAuth(
+                      isNumber: false,
+                      valid: (val) {
+                        return validInput(val!, 3, 20, "username");
+                      },
+                      mycontroller: controller.username,
+                      hinttext: "Enter your username",
+                      iconData: Icons.person_outline,
+                      labeltext: "Username",
+                    ),
+                    CustonTextFormAuth(
+                      isNumber: false,
+                      valid: (val) {
+                        return validInput(val!, 3, 35, "email");
+                      },
+                      mycontroller: controller.email,
+                      hinttext: "Enter your email",
+                      iconData: Icons.email_outlined,
+                      labeltext: "Email",
+                    ),
+                    CustonTextFormAuth(
+                      isNumber: true,
+                      valid: (val) {
+                        return validInput(val!, 2, 19, "phone");
+                      },
+                      mycontroller: controller.phone,
+                      hinttext: "Enter your phone number",
+                      iconData: Icons.phone_android_outlined,
+                      labeltext: "Phone Number",
+                    ),
+                    CustonTextFormAuth(
+                      isNumber: false,
+                      valid: (val) {
+                        return validInput(val!, 3, 30, "password");
+                      },
+                      obscureText: true,
+                      mycontroller: controller.password,
+                      hinttext: "Enter your password",
+                      iconData: Icons.lock_outline,
+                      labeltext: "Password",
+                    ),
+                    CustomButtomAuth(
+                      text: "Create",
+                      onPressed: () {
+                        controller.signUp();
+                      },
+                    ),
+                    const SizedBox(height: 40),
+                    CustomTextSignUpOrSignIn(
+                      textone: "Already have an account? ",
+                      texttwo: "Go to Sign In",
+                      onTap: () {
+                        controller.goToSignIn();
+                      },
+                    ),
+                  ],
+                ),
               ),
-            )
-        )),
+            ),
+          ),
+        ),
       ),
-
     );
   }
 }

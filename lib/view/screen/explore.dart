@@ -4,12 +4,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_custom_carousel_slider/flutter_custom_carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../controller/explore_controller.dart';
 import '../../core/constant/color.dart';
 import '../../core/constant/imageasset.dart';
+import '../../data/models/places_model.dart';
+import '../../linkapi.dart';
+import '../widget/title.dart';
 
 
 
@@ -41,7 +45,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    late places_model placesmodel;
     final contrllerr = Get.put(ExploreControllerImp());
     Get.put(ExploreControllerImp());
 
@@ -52,13 +56,18 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColor.splsh,
+        backgroundColor: AppColor.primaryColor,
         elevation: 6,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset(AppImageAsset.openaiLogo),
+        leading: Container(
+          color: AppColor.whitee,
+          child: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: Image.asset(
+
+                AppImageAsset.logoo,height: 200,),
+          ),
         ),
-        title: const Text("Smart Assistant",style: TextStyle(color: AppColor.primaryColor),),
+        title:  Text("Explore",style: TextStyle(color: AppColor.whitee,fontWeight: FontWeight.bold),),
       ),
       body: ListView(
         physics: AlwaysScrollableScrollPhysics(),
@@ -133,7 +142,64 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 ),
               ),
             ),
+          ),
+         const TitleMain(text: 'Discover Places', image: AppImageAsset.pattern1,),
+          Center(
+            child: GetBuilder<ExploreControllerImp>(
+              builder: (_) {
+                List<CarouselItem> itemList = contrllerr.places.map((place) {
+                  return CarouselItem(
+                    image: NetworkImage(
+                        place.placeImg != null ? "${AppLink.upload}${place.placeImg}" : 'default_image_path'
+                    )
+                    , // Use place image URL
+                    boxDecoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: FractionalOffset.bottomCenter,
+                        end: FractionalOffset.topCenter,
+                        colors: [
+                          Colors.blueAccent.withOpacity(1),
+                          Colors.black.withOpacity(.3),
+                        ],
+                        stops: const [0.0, 1.0],
+                      ),
+                    ),
+                    title: place.placeName ?? '', // Use place name
+                    titleTextStyle: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                    leftSubtitle: place.placesAddress ?? '', // Use place address
+                    rightSubtitle: 'More info',
+                    rightSubtitleTextStyle: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.black,
+                    ),
+                    onImageTap: (i) {
+                      placesmodel = place;
+                      contrllerr.goToPageProductDetails(placesmodel);
+                    },
+                  );
+                }).toList();
+
+
+                if (itemList.isNotEmpty) {
+                  return CustomCarouselSlider(
+                    items: itemList,
+                    height: 150,
+                    subHeight: 50,
+                    width: MediaQuery.of(context).size.width * .9,
+                    autoplay: true,
+                  );
+                } else {
+                  return CircularProgressIndicator();
+                }
+              },
+            ),
           )
+        ,
+       const SizedBox(
+        height: 40,)
         ],
       ),
     );

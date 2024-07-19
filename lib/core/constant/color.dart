@@ -4,7 +4,7 @@ class AppColor {
   static const Color black = Color(0xff000000);
   // static const Color primaryColor = Color(0xff5DB1DF);
   static const Color backgroundcolor = Color(0xffF2F2FE) ;
-  static const Color primaryColor = Color(0xff48488E);
+  static const Color primaryColor = Color(0xff7a0059);
   static const Color primaryColor2 = Color(0xffC99E54);
   static const Color bottombar = Color(0xff343434);
   static const Color ihramprimaryColor = Color(0xff5D5E60);
@@ -15,9 +15,11 @@ class AppColor {
 
   static const Color secoundColor = Color(0xffFDBD4D);
   static const Color secoundColor2 = Color(0xff10A9AE);
-  static const Color splsh = Color(0xff3FC0C0);
+  static const Color splsh = Color(0xff053D57);
+  static const Color splsh2 = Color(0xff9BCED2);
 
 
+  static Color whitee = Colors.white;
 
   static Color primaryTextColor = Colors.white;
   static Color dividerColor = Colors.white54;

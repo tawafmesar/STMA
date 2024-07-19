@@ -22,12 +22,16 @@ class AppLink {
 
   static const String homepage = "$server/home.php"  ;
 
-  static const String addchat = "$server/chatlog/add.php"  ;
-  static const String viewchat = "$server/chatlog/view.php"  ;
+  static const String hotels = "$server/hotels/view.php"  ;
+  static const String hotelsrooms = "$server/hotels/viewrooms.php"  ;
+  static const String addreservation = "$server/hotels/addreservation.php"  ;
+
+  static const String hotelimage = "$server/hotels/viewimage.php"  ;
+  static const String placeimage = "$server/places/viewimage.php"  ;
 
 
-  static const  String BASE_URL = "https://api.openai.com/v1";
-  static const String API_KEY = "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";
+  static const String votesandsuggestions = "$server/votessuggestions/view.php"  ;
+  static const String addvotesandsuggestions = "$server/votessuggestions/add.php"  ;
 
 
 }

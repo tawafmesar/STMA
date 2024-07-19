@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_carousel_slider/flutter_custom_carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:stma/linkapi.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../controller/explore_controller.dart';
+import '../../data/models/places_model.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -16,48 +18,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  List<CarouselItem> itemList = [
-    CarouselItem(
-      image: const NetworkImage(
-        'https://miro.medium.com/max/1400/1*RpaR1pTpRa0PUdNdfv4njA.png',
-      ),
-      boxDecoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: FractionalOffset.bottomCenter,
-          end: FractionalOffset.topCenter,
-          colors: [
-            Colors.blueAccent.withOpacity(1),
-            Colors.black.withOpacity(.3),
-          ],
-          stops: const [0.0, 1.0],
-        ),
-      ),
-      title:
-      'Push your creativity to its limits by reimagining this classic puzzle!',
-      titleTextStyle: const TextStyle(
-        fontSize: 12,
-        color: Colors.white,
-      ),
-      leftSubtitle: '\$51,046 in prizes',
-      rightSubtitle: '4882 participants',
-      rightSubtitleTextStyle: const TextStyle(
-        fontSize: 12,
-        color: Colors.black,
-      ),
-      onImageTap: (i) {},
-    ),
-  ] ;
-
   @override
   Widget build(BuildContext context) {
     final ExploreControllerImp controller = Get.put(ExploreControllerImp()); // Initialize your controller
+    late places_model placesmodel;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Center(
-
         child: GetBuilder<ExploreControllerImp>(
           builder: (_) {
             List<CarouselItem> itemList = controller.places.map((place) {
@@ -83,13 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.white,
                 ),
                 leftSubtitle: place.placesAddress ?? '', // Use place address
-                rightSubtitle: 'More info', // You can add more details here
+                rightSubtitle: 'More info',
                 rightSubtitleTextStyle: const TextStyle(
                   fontSize: 12,
                   color: Colors.black,
                 ),
                 onImageTap: (i) {
-                  // Handle image tap if needed
+                  placesmodel = place;
+                  controller.goToPageProductDetails(placesmodel);
                 },
               );
             }).toList();
@@ -104,10 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 autoplay: true,
               );
             } else {
-              return CircularProgressIndicator(); // Or any other placeholder widget
+              return CircularProgressIndicator();
             }
-
-
           },
         ),
       ),

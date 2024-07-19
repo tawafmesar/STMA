@@ -65,18 +65,10 @@ class ExploreControllerImp extends ExploreController {
   }
 
 
-  // @override
-  // goToItems(places, selectedplace, placesid) {
-  //   Get.toNamed(AppRoute.items, arguments: {
-  //     "places": places,
-  //     "selectedcat": selectedplace,
-  //     "catid": placesid
-  //   });
-
-
-  goToPageProductDetails(itemsModel) {
-    Get.toNamed("productdetails", arguments: {"itemsmodel": itemsModel});
+  goToPageProductDetails(placesmodel) {
+    Get.toNamed("placedetails", arguments: {"placesmodel": placesmodel});
   }
+
 }
 
 

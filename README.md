@@ -1,6 +1,6 @@
 # stma
 
-The tourism application in Saudi Arabia is a mobile application that provides information and services related to tourism in the Kingdom of Saudi Arabia. The application aims to provide comprehensive information about tourist destinations, natural sites, and cultural heritage in the country. It assists users in discovering tourist attractions, planning their trips, and making hotel and flight reservations. Its goal is to facilitate travel experiences and promote tourism in the Kingdom of Saudi Arabia.
+A new Flutter project.
 
 ## Getting Started
 

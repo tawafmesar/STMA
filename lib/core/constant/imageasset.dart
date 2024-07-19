@@ -9,6 +9,7 @@ class AppImageAsset {
   static const String onBoardingImageThree = "$rootImages/three.PNG";
 
   static const String logo                  = "$rootImages/logo.png" ;
+  static const String logoo                  = "$rootImages/logoo.png" ;
 
   static const String gif                  = "$rootImages/gif.gif" ;
 
@@ -27,8 +28,9 @@ class AppImageAsset {
   static const String home = "$rootImages/home.png";
   static const String sign = "$rootImages/sign.png";
   static const String openaiLogo = "$rootImages/openai_logo.jpg";
-  static const String splash = "$rootImages/splash.gif";
+  static const String splash = "$rootImages/logo.png";
 
+  static const String pattern1 = "$rootImages/paa.jpg";
 
   static const String userImage = "$rootImages/person.png";
   static const  String botImage = "$rootImages/chat_logo.png";

@@ -12,6 +12,11 @@ class AppRoute {
 
   static const String splash = "/splash";
   static const String explorescreen = "/explorescreen";
+  static const String placedetails = "/placedetails";
+  static const String votesSuggestions = "/votesSuggestions";
+  static const String hotelsScreen = "/hotelsScreen";
+  static const String hotelDetailsScreen = "/hotelDetailsScreen";
+
 
 
 

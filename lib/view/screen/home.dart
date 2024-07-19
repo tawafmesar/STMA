@@ -18,25 +18,24 @@ class HomeScreen extends StatelessWidget {
         bottomNavigationBar: ConvexAppBar(
           color: AppColor.primaryColor,
           elevation: 10,
-          backgroundColor: AppColor.splsh,
+          backgroundColor: AppColor.primaryColor,
           height:appBarHeight ,
           style: TabStyle.react,
           top: -25,
           curveSize: 100,
 
 
-          activeColor: AppColor.primaryColor,
 
-          items: const [
-            TabItem(icon: Center(child: FaIcon(FontAwesomeIcons.bots))
-                , title: 'البوت'),
-            TabItem(icon: Center(child: FaIcon(FontAwesomeIcons.list))
-                , title: 'السجل'),
-            TabItem(icon: Center(child: FaIcon(FontAwesomeIcons.cameraRetro)), title: 'تحديد الاشياء'),
-            TabItem(icon: Center(child: FaIcon(FontAwesomeIcons.arrowRightFromBracket)), title: 'خروج'),
+          items:  [
+            TabItem(icon: Center(child: FaIcon(FontAwesomeIcons.ccDiscover,color: AppColor.whitee,))
+                , title: 'Explore'),
+            TabItem(icon: Center(child: FaIcon(FontAwesomeIcons.paperPlane,color: AppColor.whitee,))
+                , title: 'Plan'),
+            TabItem(icon: Center(child: FaIcon(FontAwesomeIcons.cameraRetro,color: AppColor.whitee,)), title: 'Travel Tips'),
+            TabItem(icon: Center(child: FaIcon(FontAwesomeIcons.user,color: AppColor.whitee,)), title: 'Profile'),
           ],
           onTap: (int i) { controller.changeTabIndex(i);},
         )
-    );;
+    );
   }
 }

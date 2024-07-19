@@ -17,34 +17,51 @@ class SuccessResetPassword extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
-        title: Text('نجاح',
-            style: Theme.of(context)
-                .textTheme
-                .headline1!
-                .copyWith(color: AppColor.grey)),
+        title: Text(
+          'Success',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                color: AppColor.clockBG,
+                offset: Offset(2, 2),
+                blurRadius: 4,
+              ),
+            ],
+          ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.all(15),
-        child: Column(children: [
-          const Center(
+        child: Column(
+          children: [
+            const Center(
               child: Icon(
                 Icons.check_circle_outline,
                 size: 200,
                 color: AppColor.primaryColor,
-              )),
-          Text("تهانينا" , style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 30)),
-          Text("تم اعادة تعيين كلمة المرور بنجاح"),
-          const Spacer(),
-          SizedBox(
-            width: double.infinity,
-            child: CustomButtomAuth(
-                text: "الذهاب لتسجيل الدخول",
+              ),
+            ),
+            Text(
+              "Congratulations",
+              style: Theme.of(context).textTheme.headline1!.copyWith(fontSize: 30),
+            ),
+            Text("Password reset successfully"),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: CustomButtomAuth(
+                text: "Go to Sign In",
                 onPressed: () {
-                   controller.goToPageLogin();
-                }),
-          ),
-          SizedBox(height: 30)
-        ]),
+                  controller.goToPageLogin();
+                },
+              ),
+            ),
+            SizedBox(height: 30)
+          ],
+        ),
       ),
     );
   }
